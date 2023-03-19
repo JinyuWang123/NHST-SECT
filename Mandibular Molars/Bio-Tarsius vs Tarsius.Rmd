@@ -1,0 +1,111 @@
+---
+title: "Untitled"
+output: html_document
+date: "2023-03-15"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+cat("\014")
+rm(list = ls(all = TRUE))
+```
+
+```{r}
+load("C:/Users/wjyjy/Documents/TDA/Mandibular Molars/alignment_ECT/Tarsius.RData")
+Tarsius = data
+```
+
+```{r}
+ECT_list=list()
+for (i in 1:32) {
+  ECT_list[[i]]=t(Tarsius[[i]])
+}
+```
+
+```{r}
+number_iterations =32
+number_directions = 2918
+grid_length = 200
+T=3
+```
+
+```{r}
+    t_grid=seq(from=0, to=T, length.out = grid_length)
+    SECT_list=list()
+    ECT=matrix(NA, ncol = number_directions, nrow = grid_length)
+    for (iterations in 1:number_iterations) {
+    
+    
+    ECT_2D_results=ECT_list[[iterations]]
+    PECT=matrix(NA, ncol = number_directions, nrow = grid_length)
+    for (i in 1:dim(ECT_2D_results)[2]) {
+      PECT[,i]=(T/grid_length)*cumsum(ECT_2D_results[,i])
+    }
+    
+    PECT_2D_results=PECT
+    SECT=matrix(NA, ncol = number_directions, nrow = grid_length)
+    for (i in 1:dim(PECT_2D_results)[2]) {
+      SECT[,i]=PECT_2D_results[,i]-(PECT_2D_results[dim(PECT_2D_results)[1],i]/T)*t_grid
+    }
+    
+    SECT_list[[iterations]]=SECT
+  }
+```
+
+```{r}
+SECT_both_list=SECT_list
+number_iterations=16
+euclidean <- function(a, b) (sqrt(sum((a - b)^2)))
+F_statistic_original = 0
+F_matrix=matrix(0, ncol = number_iterations*2, nrow = number_iterations*2)
+dir_sup=matrix(0, ncol = number_directions, nrow = 1)
+for (i in 1:(number_iterations*2)) {
+  SECTk = SECT_both_list[[i]]
+  for (j in 1:(number_iterations*2)) {
+    SECTl = SECT_both_list[[j]]
+     for (m in 1:number_directions) {
+      dir_sup[1,m]=euclidean(SECTk[,m],SECTl[,m])
+     }
+    F_matrix[i,j]=max(dir_sup)
+  }}
+```
+
+```{r}
+ number_study=100
+ number_permutations=1000
+  F_statistic_seq=vector()
+  p_value_seq=vector()
+  for (study in 1:number_study) {
+    
+    all_indices=1:(2*number_iterations)
+    sampled_indices=sample(all_indices, size=number_iterations, replace = FALSE)
+    unsampled_indices=all_indices[-sampled_indices]
+    F=0   
+for (i in 1:number_iterations) {
+for (j in 1:number_iterations) { F = F + F_matrix[sampled_indices[i],sampled_indices[j]] +　F_matrix[unsampled_indices[i],unsampled_indices[j]]}}
+
+    for (perm in 1:number_permutations) {
+    
+    all_indices_perm=1:(2*number_iterations)
+    sampled_indices_perm=sample(all_indices_perm, size=number_iterations, replace = FALSE)
+    unsampled_indices_perm=all_indices[-sampled_indices]
+
+    
+F_perm=0   
+for (i in 1:number_iterations) {
+for (j in 1:number_iterations) { F_perm = F_perm + F_matrix[sampled_indices_perm[i],sampled_indices_perm[j]] +　F_matrix[unsampled_indices_perm[i],unsampled_indices_perm[j]]}}
+F_statistic_seq[perm]=F_perm
+    }
+  decreasing_F_stat=sort(F_statistic_seq,decreasing=TRUE)
+  p_value_seq[study]=1-(which(decreasing_F_stat<F)[1])/1000
+  }
+```
+
+
+```{r}
+mean(p_value_seq)
+sd(p_value_seq)
+```
