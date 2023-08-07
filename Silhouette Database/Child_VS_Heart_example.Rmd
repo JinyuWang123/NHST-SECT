@@ -131,7 +131,7 @@ for (i in 1:number_iterations) {
 for (j in 1:number_iterations) { F = F + F_matrix[sampled_indices[i],sampled_indices[j]] +　F_matrix[unsampled_indices[i],unsampled_indices[j]]}}
 F_statistic_seq[perm]=F
  }
-decreasing_F_stat=sort(F_statistic_seq)
-if(F_statistic_original<F_statistic_seq[1000]){p_value=0} else{p_value=1-(which(decreasing_F_stat<F_statistic_original)[1])/1000}
+decreasing_F_stat=sort(F_statistic_seq,decreasing=TRUE)
+if(F_statistic_original<decreasing_F_stat[1000]){p_value=0} else{p_value=1-(which(decreasing_F_stat<F_statistic_original)[1])/1000}
 p_value
 ```
