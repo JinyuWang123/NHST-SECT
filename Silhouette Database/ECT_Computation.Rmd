@@ -24,13 +24,13 @@ library(RcppParallel)
 ```
 
 ```{r}
-source("./TDA/Silhouette Database/Software/EC3D.R")
+source("C:/Users/wjyjy/Documents/NHST-SECT/Silhouette Database/Software/EC3D.R")
 
 
 ### Set up the Parameters ###
-startdir = "./TDA/Silhouette Database/Data"
-in.dir = "./TDA/Silhouette Database/Data/All_img"
-out.file = "./TDA/Silhouette Database/Data/MRIECs.RData"
+startdir = "C:/Users/wjyjy/Documents/NHST-SECT/Silhouette Database/Data"
+in.dir = "C:/Users/wjyjy/Documents/NHST-SECT/Silhouette Database/Data/All_img"
+out.file = "C:/Users/wjyjy/Documents/NHST-SECT/Silhouette Database/Data/MRIECs.RData"
 ```
 
 
