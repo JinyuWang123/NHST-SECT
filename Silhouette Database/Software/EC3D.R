@@ -71,7 +71,7 @@ MRI_list <- list(NULL)
 #    MRI_list[[k]]$name <- TCGA_patients[k]
         MRI_list[[k]]$EC <- NULL
     # Go grab images for patient k
-        subdir = paste(startdir,"/",in.dir,"/",TCGA_patients[k],"/",img.dir,sep="")
+        subdir = paste(in.dir,"/",TCGA_patients[k],"/",img.dir,sep="")
         setwd(subdir)
     # Some patients have no images, hence checking whether images are present
         if ( length(dir(pattern='.png')) > 0 ) {
