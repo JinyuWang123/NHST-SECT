@@ -40,7 +40,7 @@ library(iterators)
 ```
 
 ```{r}
-load("C:/Users/wjyjy/Documents/TDA/Silhouette Database/Data/MRIECs.RData")
+load("C:/Users/wjyjy/Documents/NHST-SECT/Silhouette Database/Data/MRIECs.RData")
 data_1_list=MRI_list
 number_iterations =20
 number_directions = 72
