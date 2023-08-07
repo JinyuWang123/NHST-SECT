@@ -17,7 +17,7 @@ rm(list = ls(all = TRUE))
 ```
 
 ```{r}
-load("C:/Users/wjyjy/Documents/TDA/Silhouette Database/Data/MRIECs.RData")
+load("C:/Users/wjyjy/Documents/NHST-SECT/Silhouette Database/Data/MRIECs.RData")
 ```
 
 ```{r}
