@@ -14,7 +14,7 @@ rm(list = ls(all = TRUE))
 ```
 
 ```{r}
-load("C:/Users/wjyjy/Documents/TDA/Mandibular Molars/alignment_ECT/Tarsius.RData")
+load("C:/Users/wjyjy/Documents/NHST-SECT/Mandibular Molars/alignment_ECT/Tarsius.RData")
 Tarsius = data
 ```
 
