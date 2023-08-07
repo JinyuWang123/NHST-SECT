@@ -11,10 +11,10 @@ open3d()
 rgl.bg(color = 'white')
 mfrow3d(nr=6,nc = 10)
 rgl.bg(color = 'white')
-tarsius_files = list.files('C:/Users/wjyjy/Documents/TDA/Mandibular Molars/new_teeth_ect_aligned_by_species/Tarsius/',full.names = TRUE)
-microcebus_files = list.files('C:/Users/wjyjy/Documents/TDA/Mandibular Molars/new_teeth_ect_aligned_by_species/Microcebus/',full.names = TRUE)
-mirza_files = list.files('C:/Users/wjyjy/Documents/TDA/Mandibular Molars/new_teeth_ect_aligned_by_species/Mirza/',full.names = TRUE)
-saimiri_files = list.files('C:/Users/wjyjy/Documents/TDA/Mandibular Molars/new_teeth_ect_aligned_by_species/Saimiri/',full.names = TRUE)
+tarsius_files = list.files('C:/Users/wjyjy/Documents/NHST-SECT/Mandibular Molars/new_teeth_ect_aligned_by_species/Tarsius/',full.names = TRUE)
+microcebus_files = list.files('C:/Users/wjyjy/Documents/NHST-SECT/Mandibular Molars/new_teeth_ect_aligned_by_species/Microcebus/',full.names = TRUE)
+mirza_files = list.files('C:/Users/wjyjy/Documents/NHST-SECT/Mandibular Molars/new_teeth_ect_aligned_by_species/Mirza/',full.names = TRUE)
+saimiri_files = list.files('C:/Users/wjyjy/Documents/NHST-SECT/Mandibular Molars/new_teeth_ect_aligned_by_species/Saimiri/',full.names = TRUE)
 
 
 
